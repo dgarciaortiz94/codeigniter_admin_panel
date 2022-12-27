@@ -10,11 +10,7 @@ class RegisterController extends BaseController
 {
     public function index()
     {
-        $data['title'] = "HOME DESDE CONTROLLER"; // Capitalize the first letter
-
-        return view('client/templates/header', $data)
-            .view('register/index')
-            .view('client/templates/footer');
+        return view('register/index');
     }
 
 
