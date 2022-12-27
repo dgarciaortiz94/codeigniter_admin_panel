@@ -1,0 +1,32 @@
+<div>
+    <table>
+        <tr>
+            <th>Nombre</th>
+            <td><?=$user->name?></td>
+        </tr>
+        <tr>
+            <th>Primer apellido</th>
+            <td><?=$user->firstname?></td>
+        </tr>
+        <tr>
+            <th>Segundo apellido</th>
+            <td><?=$user->lastname?></td>
+        </tr>
+        <tr>
+            <th>Email</th>
+            <td><?=$user->email?></td>
+        </tr>
+        <tr>
+            <th>Role</th>
+            <td><?=$user->role?></td>
+        </tr>
+        <tr>
+            <th>Registro</th>
+            <td><?=$user->created_at?></td>
+        </tr>
+        <tr>
+            <th>Actualizado</th>
+            <td><?=$user->updated_at?></td>
+        </tr>
+    </table>
+</div>
