@@ -30,9 +30,15 @@ class LoginController extends BaseController
             $data['errors'][] = "Credenciales no válidas";
         }
 
-        return view('client/templates/header')
-            .view('login/index', $data)
-            .view('client/templates/footer');
+        return view('login/index', $data);
+    }
+
+    public function logout()
+    {
+        $session = Services::session();
+        $session->destroy();
+        
+        return redirect()->route('client_home');
     }
 
 }
