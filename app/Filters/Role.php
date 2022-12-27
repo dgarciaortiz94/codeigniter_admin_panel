@@ -10,8 +10,8 @@ class Role implements FilterInterface
 {
     public function before(RequestInterface $request, $arguments = null)
     {
-        if (! in_array(session()->user->role, $arguments)) {
-            return redirect()->route('login');
+        if ( (!session()->is_logged) || (!in_array(session()->user->role, $arguments)) ) {
+            return redirect()->to('login');
         }
     }
 
