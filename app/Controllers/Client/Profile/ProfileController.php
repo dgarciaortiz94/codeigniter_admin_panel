@@ -47,8 +47,6 @@ class ProfileController extends BaseController
             $userModel->update($user->id, $user);
         }
 
-        return view('client/templates/header')
-            .view('client/profile/edit', ["user" => $user, "file" => isset($file) ? $file : []])
-            .view('client/templates/footer');
+        return view('client/profile/edit', ["user" => $user, "file" => isset($file) ? $file : []]);
     }
 }
