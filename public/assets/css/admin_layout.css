@@ -1,0 +1,17 @@
+body {
+    background-image: url(../../media/website/admin_panel_bg.webp);
+}
+
+.header {
+    min-height: 10vh;
+}
+
+.section {
+    min-height: 70vh;
+}
+
+.footer {
+    min-height: 20vh;
+    border-top: 2px solid #000000;
+    padding: 30px 15px;
+}

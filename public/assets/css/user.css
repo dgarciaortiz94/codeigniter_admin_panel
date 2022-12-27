@@ -1,0 +1,21 @@
+.section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.user-card {
+    padding: 15px;
+    box-shadow: 0 0 5px;
+    border-radius: 15px;
+}
+
+.user-card__profile-img {
+    width: 150px;
+    height: 150px;
+    background-position: center center;
+    background-size: cover;
+    border-radius: 100%;
+    box-shadow: 0 0 5px;
+    margin: 15px 0;
+}
