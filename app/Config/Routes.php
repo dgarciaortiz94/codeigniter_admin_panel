@@ -49,6 +49,10 @@ $routes->group('login', function ($routes) {
     $routes->match(['get', 'post'], '/', 'Login\LoginController::login', ['as' => 'login']);
 });
 
+$routes->group('logout', function ($routes) {
+    $routes->get('/', 'Login\LoginController::logout', ['as' => 'logout']);
+});
+
 $routes->group('profile', function ($routes) {
     $routes->match(['get', 'post'], 'edit', 'Client\Profile\ProfileController::edit', ['as' => 'client_profile']);
 });
@@ -62,6 +66,14 @@ $routes->group('admin', ['filter' => 'role:["ROLE_USER"],["ROLE_ADMIN"],["ROLE_S
         $routes->match(['get', 'post'], 'new', 'AdminPanel\UserController::new', ['as' => 'admin_panel_user_new']);
         $routes->match(['get', 'post'], '(:num)/edit', 'AdminPanel\UserController::edit/$1', ['as' => 'admin_panel_user_edit']);
         $routes->get('delete', 'AdminPanel\UserController::delete', ['as' => 'admin_panel_user_delete']);
+    });
+
+    $routes->group('video', function ($routes) {
+        $routes->get('/', 'AdminPanel\VideoController::index', ['as' => 'admin_panel_video_index']);
+        $routes->get('(:num)', 'AdminPanel\VideoController::show/$1', ['as' => 'admin_panel_video_show']);
+        $routes->match(['get', 'post'], 'new', 'AdminPanel\VideoController::new', ['as' => 'admin_panel_video_new']);
+        $routes->match(['get', 'post'], '(:num)/edit', 'AdminPanel\VideoController::edit/$1', ['as' => 'admin_panel_video_edit']);
+        $routes->get('delete', 'AdminPanel\VideoController::delete', ['as' => 'admin_panel_video_delete']);
     });
 
     $routes->group('profile', function ($routes) {
