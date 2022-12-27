@@ -13,9 +13,7 @@ class UserController extends BaseController
         $userModel = new UserModel();
         $users = $userModel->findAll();
 
-        return view('client/templates/header')
-            .view('adminPanel/user/index', ['users' => $users])
-            .view('client/templates/footer');
+        return view('adminPanel/user/index', ['users' => $users]);
     }
 
     public function new()
@@ -34,18 +32,14 @@ class UserController extends BaseController
             return $this->response->redirect('/admin/user/');
         }
 
-        return view('client/templates/header')
-            .view('adminPanel/user/new')
-            .view('client/templates/footer');
+        return view('adminPanel/user/new');
     }
 
     public function show($user)
     {
         $userModel = new UserModel();
 
-        return view('client/templates/header')
-            .view('adminPanel/user/show', ["user" => $userModel->find($user)])
-            .view('client/templates/footer');
+        return view('adminPanel/user/show', ["user" => $userModel->find($user)]);
     }
 
     public function edit($user)
@@ -64,9 +58,7 @@ class UserController extends BaseController
             return $this->response->redirect(base_url() . route_to('admin_panel_user_index'));
         }
 
-        return view('client/templates/header')
-            .view('adminPanel/user/edit', ["user" => $userModel->find($user)])
-            .view('client/templates/footer');
+        return view('adminPanel/user/edit', ["user" => $userModel->find($user)]);
     }
 
     public function delete()
