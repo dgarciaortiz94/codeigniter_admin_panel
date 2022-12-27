@@ -1,5 +1,10 @@
+<?php if ($file) { ?>
+    <div class="form-error">
+        <?= dd($file) ?>
+    </div>
+<?php } ?>
 
-<?= form_open_multipart('upload/upload') ?>
+<form action="<?=base_url() . route_to('admin_panel_profile_edit')?>" method="post" enctype="multipart/form-data">
     <input type="file" name="image">
     <input name="name" type="text" class="form-control" placeholder="Nombre" value="<?php if($user) echo $user->name ?>">
     <input name="firstname" type="text" class="form-control" placeholder="Primer apellido" value="<?php if($user) echo $user->firstname ?>">

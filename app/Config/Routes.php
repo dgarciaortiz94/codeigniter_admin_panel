@@ -65,7 +65,7 @@ $routes->group('admin', ['filter' => 'role:["ROLE_USER"],["ROLE_ADMIN"],["ROLE_S
     });
 
     $routes->group('profile', function ($routes) {
-        $routes->get('edit', 'AdminPanel\ProfileController::edit', ['as' => 'admin_panel_profile_edit']);
+        $routes->match(['get', 'post'], 'edit', 'AdminPanel\ProfileController::edit', ['as' => 'admin_panel_profile_edit']);
     });
 });
 

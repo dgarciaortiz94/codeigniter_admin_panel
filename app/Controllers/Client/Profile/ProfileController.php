@@ -17,7 +17,29 @@ class ProfileController extends BaseController
             $user->fill($this->request->getPost());
 
             //HANDLE IMAGE
-            
+            $validationRule = [
+                'userfile' => [
+                    'label' => 'Image File',
+                    'rules' => 'uploaded[image]'
+                        . '|is_image[image]'
+                        . '|mime_in[image,image/jpg,image/jpeg,image/gif,image/png,image/webp]'
+                        . '|max_size[image,100000]'
+                        . '|max_dims[image,1920,1080]',
+                ],
+            ];
+
+            if (! $this->validate($validationRule)) $file = ['errors' => $this->validator->getErrors()];
+    
+            $img = $this->request->getFile('image');
+    
+            if (! $img->hasMoved()) {
+                $img->move(ROOTPATH.'/public/media/users', $img->getRandomName());
+
+                $user->image = $img->getName();
+            } else {
+                $file = ['errors' => 'The file has already been moved.'];
+            }
+            //-------------------------------------------------------------------
 
             if ($this->request->getPost('plainPassword')) $user->password = password_hash($this->request->getPost('plainPassword'), PASSWORD_DEFAULT);
 
@@ -26,7 +48,7 @@ class ProfileController extends BaseController
         }
 
         return view('client/templates/header')
-            .view('client/profile/edit', ["user" => $user])
+            .view('client/profile/edit', ["user" => $user, "file" => isset($file) ? $file : []])
             .view('client/templates/footer');
     }
 }

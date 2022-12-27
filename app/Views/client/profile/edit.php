@@ -1,4 +1,11 @@
-<form action="<?=base_url() . route_to('client_user_new')?>" method="post">
+<?php if ($file) { ?>
+    <div class="form-error">
+        <?= dd($file) ?>
+    </div>
+<?php } ?>
+
+<form action="<?=base_url() . route_to('client_user_new')?>" method="post" enctype="multipart/form-data">
+    <input type="file" name="image">
     <input name="name" type="text" class="form-control" placeholder="Nombre" value="<?php if($user) echo $user->name ?>">
     <input name="firstname" type="text" class="form-control" placeholder="Primer apellido" value="<?php if($user) echo $user->firstname ?>">
     <input name="lastname" type="text" class="form-control" placeholder="Segundo apellido" value="<?php if($user) echo $user->lastname ?>">
