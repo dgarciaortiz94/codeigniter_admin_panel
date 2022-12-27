@@ -1,0 +1,70 @@
+body {
+    background-image: url(../../media/website/enubes.jpg);
+    background-position: center center;
+    background-size: cover;
+    background-attachment: fixed;
+    min-height: 100vh;
+}
+
+.section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-login {
+    width: 100%;
+    max-width: 450px;
+    text-align: center;
+    padding: 150px 40px;
+    background-color: #00000093;
+    color: #ffffff;
+    margin-top: 30px;
+}
+
+.form-login input {
+    margin: 10px 0;
+    color: #ffffff !important;
+}
+
+.form-login input[type='text'], .form-login input[type='password'], .form-login input[type='email'] {
+    text-align: center;
+    background-color: initial;
+    border-radius: 0;
+    border: none;
+    border-bottom: 3px solid var(--secondary-color);
+}
+
+.form-login input[type='text']:focus, .form-login input[type='password']:focus, .form-login input[type='email']:focus {
+    outline: none;
+}
+
+.form-login input[type='text']::placeholder, .form-login input[type='password']::placeholder, .form-login input[type='email']::placeholder {
+    text-align: center;
+}
+
+.form-login input[type='submit'] {
+    width: 100%;
+    padding: 5px 0;
+    margin-top: 30px;
+    text-align: center;
+    border: none;
+    background-color: var(--secondary-color);
+    transition: all .3s ease-in-out;
+    -webkit-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+}
+
+.form-login input[type='submit']:hover {
+    width: 100%;
+    text-align: center;
+    border: none;
+    background-color: var(--secondary-color-hover);
+}
+
+.form-login__register {
+    margin-top: 15px;
+    font-size: 0.9em;
+}
