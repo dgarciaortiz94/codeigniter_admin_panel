@@ -60,3 +60,22 @@ body {
 .navbar .nav-link, .navbar .nav-link:link, .navbar .nav-link:visited {
     color: #ffffff;
 }
+
+.navbar-mobile .dropdown-menu {
+    width: 100%;
+    background-color: inherit;
+    border: none;
+    border-top: 1px solid #bdbdbd;
+    border-bottom: 1px solid #bdbdbd;
+    border-radius: 0;
+    text-align: center;
+    box-shadow: none;
+}
+
+.navbar-mobile .dropdown-menu a:hover {
+    background-color: inherit;
+}
+
+.navbar-toggler:focus {
+    box-shadow: none;
+}

@@ -17,6 +17,7 @@
             <?= view('client/inc/navbar.php') ?>
         </div>
     </header>
+    <?= view('client/inc/navbar-mobile.php') ?>
 
     <div class="container">
         <section class="section">
