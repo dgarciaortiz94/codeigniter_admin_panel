@@ -19,3 +19,12 @@
     box-shadow: 0 0 5px;
     margin: 15px 0;
 }
+
+table .profile-img {
+    background-position: center center;
+    background-size: cover;
+    height: 50px;
+    width: 50px;
+    border-radius: 100%;
+    box-shadow: 0 0 5px;
+}

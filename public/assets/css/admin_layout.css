@@ -1,5 +1,7 @@
 body {
     background-image: url(../../media/website/admin_panel_bg.webp);
+    background-position: center center;
+    background-size: cover;
 }
 
 .header {

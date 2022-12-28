@@ -40,6 +40,13 @@
     --secondary-color-hover: #1080ac;
 }
 
+body {
+    font-family: Roboto;
+}
+
+.section {
+    padding: 50px 0;
+}
 
 .navbar .profile-img {
     width: 40px;
@@ -48,4 +55,8 @@
     box-shadow: 0 0 5px;
     background-position: center center;
     background-size: cover;
+}
+
+.navbar .nav-link, .navbar .nav-link:link, .navbar .nav-link:visited {
+    color: #ffffff;
 }

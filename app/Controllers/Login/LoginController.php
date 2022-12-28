@@ -24,10 +24,10 @@ class LoginController extends BaseController
                 $session->set(['user' => $user]);
                 $session->set('is_logged', true);
 
-                return redirect()->route('client_home');
+                return json_encode(['success' => 'true']);
             }
 
-            $data['errors'][] = "Credenciales no válidas";
+            return json_encode(['success' => false, 'errors' => ['Credenciales no válidas']]);
         }
 
         return view('login/index', $data);

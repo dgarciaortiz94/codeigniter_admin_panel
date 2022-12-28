@@ -1,0 +1,18 @@
+body {
+    
+}
+
+.header {
+    min-height: 7vh;
+    display: flex;
+    align-items: center;
+}
+
+.section {
+    min-height: 73vh;
+}
+
+.footer {
+    min-height: 20vh;
+    padding: 30px 15px;
+}
