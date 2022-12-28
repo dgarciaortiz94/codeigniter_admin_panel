@@ -27,6 +27,10 @@ body {
     color: #ffffff !important;
 }
 
+.form-login input[type='file'] {
+    background-color: transparent;
+}
+
 .form-login input[type='text'], .form-login input[type='password'], .form-login input[type='email'] {
     text-align: center;
     background-color: initial;

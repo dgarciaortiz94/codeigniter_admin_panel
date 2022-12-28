@@ -14,5 +14,49 @@ body {
 
 .footer {
     min-height: 20vh;
-    padding: 30px 15px;
+    padding: 0 15px;
+    font-size: 0.9em;
+}
+
+.footer > .container-fluid > .row > div {
+    padding: 15px 0;
+}
+
+.footer__nav a, .footer__nav a:link, .footer__nav a:visited {
+    color: initial;
+    text-decoration: none;
+    transition: all .2s ease-in-out;
+    -webkit-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+}
+
+.footer__nav a:hover {
+    color: var(--secondary-color);
+}
+
+.footer__nav ul{
+    list-style: none;
+}
+
+.footer__copyright {
+    border-top: 1px solid #bbbbbb;
+    padding: 15px 0;
+}
+
+
+@media (max-width: 991.9px) {
+    .footer__info {
+        border-left: 1px solid #dddddd;
+        border-right: 1px solid #dddddd;
+    }
+}
+
+@media (max-width: 767.9px) {
+    .footer__info {
+        border-top: 1px solid #dddddd;
+        border-bottom: 1px solid #dddddd;
+        border-left: none;
+        border-right: none;
+    }
 }

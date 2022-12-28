@@ -7,7 +7,7 @@
 <?= $this->section('section') ?>
     <div class="row bg-dark p-4 mt-5">
         <?php if (isset($videos[0])) { ?>
-            <div class="col-12 col-md-8">
+            <div class="col-12 col-lg-8">
                 <video class="w-100" src="<?= base_url() . '/media/videos/'.$videos[0]->path ?>" controls></video>
                 <div class="text-light">
                     <h2 style="font-family: Roboto-Bold;"><?= strtoupper($videos[0]->title) ?></h4>
@@ -15,12 +15,12 @@
                 </div>
             </div>
         <?php } else { ?>
-            <div class="empty-video__box text-light col-12 col-md-8">
+            <div class="empty-video__box text-light col-12 col-lg-8">
                 Proximamente...
             </div>
         <?php } ?>
 
-        <div class="videos-asidebar col-12 col-md-4 d-flex flex-column justify-content-between">
+        <div class="videos-asidebar col-12 col-lg-4 d-flex flex-column justify-content-between px-0 ps-lg-3 pe-lg-0 pt-4 pt-lg-0">
             <?php for ($i=1; $i < 4; $i++) {  ?>
                 <?php if (isset($videos[$i])) { ?>
                     <div type="button" class="video__box" data-bs-toggle="modal" data-bs-target="#staticBackdrop">

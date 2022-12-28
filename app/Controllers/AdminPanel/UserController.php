@@ -125,7 +125,10 @@ class UserController extends BaseController
             return $this->response->redirect(base_url() . route_to('admin_panel_user_index'));
         }
 
-        return view('adminPanel/user/edit', ["user" => $user]);
+        return view('adminPanel/user/edit', [
+            "user" => $user,
+            "edit" => true,
+        ]);
     }
 
     public function delete($user)
