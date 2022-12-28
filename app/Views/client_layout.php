@@ -31,15 +31,15 @@
                 <div class="footer__nav col-12 col-md-3 col-lg-4">
                     <nav class="row">
                         <?php if (session('is_logged')) { ?>
-                            <div class="col-12 col-sm-2 col-md-12 py-1"><a href="">Home</a></div>
+                            <div class="col-12 col-sm-2 col-md-12 py-1"><a href="<?=base_url().route_to('client_home')?>">Home</a></div>
                         <?php } ?>
                         <?php if (session('is_logged') && '["ROLE_ADMIN"]' == session('user')->role) { ?>
-                            <div class="col-12 col-sm-2 col-md-12 py-1"><a href="">Usuarios</a></div>
-                            <div class="col-12 col-sm-2 col-md-12 py-1"><a href="">Videos</a></div>
+                            <div class="col-12 col-sm-2 col-md-12 py-1"><a href="<?=base_url().route_to('admin_panel_user_index')?>">Usuarios</a></div>
+                            <div class="col-12 col-sm-2 col-md-12 py-1"><a href="<?=base_url().route_to('admin_panel_video_index')?>">Videos</a></div>
                         <?php } ?>
                         <?php if (session('is_logged')) { ?>
-                            <div class="col-12 col-sm-3 col-md-12 py-1"><a href="">Editar perfil</a></div>
-                            <div class="col-12 col-sm-3 col-md-12 py-1"><a href="">Cerrar sesión</a></div>
+                            <div class="col-12 col-sm-3 col-md-12 py-1"><a href="<?=base_url().route_to('client_profile')?>">Editar perfil</a></div>
+                            <div class="col-12 col-sm-3 col-md-12 py-1"><a href="<?=base_url().route_to('logout')?>">Cerrar sesión</a></div>
                         <?php } ?>
                     </nav>
                 </div>
