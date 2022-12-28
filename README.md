@@ -1,3 +1,44 @@
+# CodeIgniter 4 Instrucciones de Despliegue
+
+## Versiones utilizadas
+
+- Codeigniter 4.2.11.
+- PHP 8.1.6
+- Composer 2.3.10
+- MySQL 5.7
+- Apache 2.4.53
+
+## Despliegue
+
+- git clone https://github.com/dgarciaortiz94/enubes_test_copy.git o descargar zip y descomprimir en la carpeta deseada.
+
+- desplegar el proyecto en un servidor apache con la misma versión de apache y php que la indicada. Para ello yo he utilizado XAMPP pero se puede desplegar tanto en un servidor real como en un entorno de desarrollo con Docker.
+
+- importar la base de datos enubes_test.sql
+
+- renombrar el archivo .env.local a .env y cambiar los siguientes parámetros:
+    - app.baseURL: cambiar enubes-test-copia por el nombre de tu proyecto.
+    - Cambiar los parámetros de configuración y credenciales de la base de datos a los que estés utilizando.
+    
+- ejecutar en la terminal en la raiz del proyecto: composer install
+
+
+## Manual de la aplicación
+
+- La raiz de la aplicación si haces el despliegue en local será /public salvo que apuntes con el servidor o un vhost a esa carpeta por lo que a partir de ahora me referiré a todas las rutas a partir de /public/.
+
+- La aplicación consta de una página de registro en la ruta /registro donde podrás darte de alta.
+
+- El login está en la ruta /login.
+
+- Para acceder al panel de administración en el que podrás ver los usuarios y los videos debes tener el role de ["ROLE_ADMIN"].
+
+- en la ruta raiz /public se puede ver una home en la que no hay ningún video. Puedes subirlos a través del panel de Admin.
+
+
+
+
+
 # CodeIgniter 4 Application Starter
 
 ## What is CodeIgniter?
