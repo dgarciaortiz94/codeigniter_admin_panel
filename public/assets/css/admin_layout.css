@@ -8,6 +8,10 @@ body {
     min-height: 10vh;
 }
 
+.navbar-mobile {
+    background-color: #ffc107 !important;
+}
+
 .section {
     min-height: 70vh;
 }

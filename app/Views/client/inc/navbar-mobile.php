@@ -1,5 +1,5 @@
 <nav class="navbar navbar-mobile bg-dark px-4 py-0 text-center position-absolute w-100 d-lg-none">
-    <div class="collapse navbar-collapse bg-dark" id="navbarSupportedContent">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <?php if (session('is_logged')) { ?>
                 <li class="nav-item dropdown pt-3">
