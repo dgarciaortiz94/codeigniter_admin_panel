@@ -1,4 +1,4 @@
-# CodeIgniter 4 Instrucciones de Despliegue
+# Instrucciones de Despliegue
 
 ## Versiones utilizadas
 
