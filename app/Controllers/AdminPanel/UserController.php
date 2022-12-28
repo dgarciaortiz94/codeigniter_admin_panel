@@ -82,7 +82,7 @@ class UserController extends BaseController
             $user->fill($this->request->getPost());
 
             //HANDLE IMAGE
-            if ($this->request->getFile('image')) {
+            if ($this->request->getFile('image')->getName()) {
                 $validationRule = [
                     'userfile' => [
                         'label' => 'Image File',
