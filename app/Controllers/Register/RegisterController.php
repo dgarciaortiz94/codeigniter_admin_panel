@@ -10,6 +10,8 @@ class RegisterController extends BaseController
 {
     public function index()
     {
+        if (session()->is_logged) return redirect()->route('client_home');
+
         return view('register/index');
     }
 
