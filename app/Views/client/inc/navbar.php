@@ -5,16 +5,20 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="<?=base_url().route_to('client_home')?>">Home</a>
-                </li>
-                <?php if (session('is_logged') && '["ROLE_USER"]' == session('user')->role) { ?>
+                <?php if (session('is_logged')) { ?>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="<?=base_url().route_to('client_home')?>">Home</a>
+                    </li>
+                <?php } ?>
+                <?php if (session('is_logged') && '["ROLE_ADMIN"]' == session('user')->role) { ?>
                     <li class="nav-item">
                         <a class="nav-link" href="<?=base_url().route_to('admin_panel_user_index')?>">Usuarios</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="<?=base_url().route_to('admin_panel_video_index')?>">Videos</a>
                     </li>
+                <?php } ?>
+                <?php if (session('is_logged')) { ?>
                     <li class="nav-item dropdown">
                         <div class="d-flex align-items-center">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">

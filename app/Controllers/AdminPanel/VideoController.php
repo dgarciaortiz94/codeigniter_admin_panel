@@ -26,28 +26,30 @@ class VideoController extends BaseController
             $video->active = true;
 
             //HANDLE VIDEO
-            $validationRule = [
-                'userfile' => [
-                    'label' => 'Video File',
-                    'rules' => 'uploaded[video]'
-                        . '|is_image[video]'
-                        . '|mime_in[video,video/mp4]'
-                        . '|max_size[video,300000]'
-                ],
-            ];
+            if ($this->request->getFile('video')) {
+                $validationRule = [
+                    'userfile' => [
+                        'label' => 'Video File',
+                        'rules' => 'uploaded[video]'
+                            . '|is_image[video]'
+                            . '|mime_in[video,video/mp4]'
+                            . '|max_size[video,300000]'
+                    ],
+                ];
 
-            if (! $this->validate($validationRule)) $file = ['errors' => $this->validator->getErrors()];
-    
-            $videoFile = $this->request->getFile('video');
+                if (! $this->validate($validationRule)) $file = ['errors' => $this->validator->getErrors()];
+        
+                $videoFile = $this->request->getFile('video');
 
-            $name = $videoFile->getRandomName();
-    
-            if (! $videoFile->hasMoved()) {
-                $videoFile->move(ROOTPATH.'/public/media/videos', $name);
+                $name = $videoFile->getRandomName();
+        
+                if (! $videoFile->hasMoved()) {
+                    $videoFile->move(ROOTPATH.'/public/media/videos', $name);
 
-                $video->path = $name;
-            } else {
-                $file = ['errors' => 'The file has already been moved.'];
+                    $video->path = $name;
+                } else {
+                    $file = ['errors' => 'The file has already been moved.'];
+                }
             }
             //-------------------------------------------------------------------
 
@@ -70,10 +72,40 @@ class VideoController extends BaseController
     public function edit($video)
     {
         $videoModel = new VideoModel();
+        $video = $videoModel->find($video);
 
         if ($this->request->getMethod() == 'post') {
-            $video = new Video();
             $video->fill($this->request->getPost());
+
+            //HANDLE VIDEO
+            if ($this->request->getFile('video')) {
+                $validationRule = [
+                    'userfile' => [
+                        'label' => 'Video File',
+                        'rules' => 'uploaded[video]'
+                            . '|is_image[video]'
+                            . '|mime_in[video,video/mp4]'
+                            . '|max_size[video,300000]'
+                    ],
+                ];
+
+                if (! $this->validate($validationRule)) $file = ['errors' => $this->validator->getErrors()];
+        
+                $videoFile = $this->request->getFile('video');
+
+                $name = $videoFile->getRandomName();
+        
+                if (! $videoFile->hasMoved()) {
+                    $videoFile->move(ROOTPATH.'/public/media/videos', $name);
+
+                    if (is_file(ROOTPATH.'public/media/videos/'.$video->path)) unlink(ROOTPATH.'public/media/videos/'.$video->path); 
+                    
+                    $video->path = $name;
+                } else {
+                    $file = ['errors' => 'The file has already been moved.'];
+                }
+            }
+            //-------------------------------------------------------------------
 
             $videoModel = new VideoModel();
             $videoModel->update($video->id, $video);
@@ -81,14 +113,16 @@ class VideoController extends BaseController
             return redirect()->route('admin_panel_video_index');
         }
 
-        return view('adminPanel/video/edit', ["video" => $videoModel->find($video)]);
+        return view('adminPanel/video/edit', ["video" => $video]);
     }
 
-    public function delete()
+    public function delete($video)
     {
         $videoModel = new VideoModel();
-        $video = $videoModel->find(4);
+        $video = $videoModel->find($video);
 
+        if (is_file(ROOTPATH.'public/media/videos/'.$video->path)) unlink(ROOTPATH.'public/media/videos/'.$video->path); 
+        
         $videoModel->delete($video->id);
 
         return redirect()->route('admin_panel_video_index');

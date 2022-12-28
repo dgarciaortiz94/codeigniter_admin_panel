@@ -14,9 +14,11 @@
         </div>
     </header>
 
-    <section class="container section">
-        <?= $this->renderSection('section') ?>
-    </section>
+    <div class="container">
+        <section class="section">
+            <?= $this->renderSection('section') ?>
+        </section>
+    </div>
 
     <footer class="footer bg-dark text-light">
         Este es el footer admin
