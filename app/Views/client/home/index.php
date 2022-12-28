@@ -6,13 +6,19 @@
 
 <?= $this->section('section') ?>
     <div class="row bg-dark p-4 mt-5">
-        <div class="col-12 col-md-8">
-            <video class="w-100" src="<?= base_url() . '/media/videos/'.$videos[0]->path ?>" controls></video>
-            <div class="text-light">
-                <h2 style="font-family: Roboto-Bold;"><?= strtoupper($videos[0]->title) ?></h4>
-                <p><?= ucfirst($videos[0]->description) ?></p>
+        <?php if (isset($videos[0])) { ?>
+            <div class="col-12 col-md-8">
+                <video class="w-100" src="<?= base_url() . '/media/videos/'.$videos[0]->path ?>" controls></video>
+                <div class="text-light">
+                    <h2 style="font-family: Roboto-Bold;"><?= strtoupper($videos[0]->title) ?></h4>
+                    <p><?= ucfirst($videos[0]->description) ?></p>
+                </div>
             </div>
-        </div>
+        <?php } else { ?>
+            <div class="empty-video__box text-light col-12 col-md-8">
+                Proximamente...
+            </div>
+        <?php } ?>
 
         <div class="videos-asidebar col-12 col-md-4 d-flex flex-column justify-content-between">
             <?php for ($i=1; $i < 4; $i++) {  ?>
