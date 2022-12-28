@@ -21,7 +21,5 @@
         </section>
     </div>
 
-    <footer class="footer bg-dark text-light">
-        Este es el footer admin
-    </footer>
+    <?= view('client/inc/footer.php') ?>
 <?= $this->endSection() ?>

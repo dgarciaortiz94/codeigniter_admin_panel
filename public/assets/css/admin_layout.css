@@ -16,8 +16,14 @@ body {
     min-height: 70vh;
 }
 
+.table-wrapper {
+    overflow-x: scroll;
+    margin-bottom: 15px;
+}
+
 .footer {
     min-height: 20vh;
-    border-top: 2px solid #000000;
     padding: 30px 15px;
+    background-color: #212529 !important;
+    color: #fbfbfb !important;
 }
