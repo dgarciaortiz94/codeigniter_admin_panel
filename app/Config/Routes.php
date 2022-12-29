@@ -38,11 +38,7 @@ $routes->set404Override();
 $routes->get('/', 'Client\Home\HomeController::index', ['as' => 'client_home', 'filter' => 'auth']);
 
 $routes->group('registro', function ($routes) {
-    $routes->get('/', 'Register\RegisterController::index', ['as' => 'register_index']);
-});
-
-$routes->group('user', function ($routes) {
-    $routes->post('new', 'Client\User\UserController::new', ['as' => 'client_user_new']);
+    $routes->match(['get', 'post'], '/', 'Register\RegisterController::index', ['as' => 'register_index']);
 });
 
 $routes->group('login', function ($routes) {

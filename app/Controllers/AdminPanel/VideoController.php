@@ -19,45 +19,52 @@ class VideoController extends BaseController
 
     public function new()
     {
+        $videoModel = new VideoModel();
+        $video = new Video();
+
         if ($this->request->getMethod() == 'post') {
-            $video = new Video();
+            $validationRule = [
+                'title' => [
+                    'label' => 'TITLE',
+                    'rules' => 'max_length[200]'
+                        . 'required'
+                ],
+                'video' => [
+                    'label' => 'VIDEO',
+                    'rules' => 'uploaded[video]'
+                        . 'required'
+                        . '|mime_in[video,video/mp4]'
+                        . '|max_size[video,'.ini_get("upload_max_filesize").']'
+                ],
+            ];
 
-            $video->fill($this->request->getPost());
-            $video->active = true;
+            if ($this->validate($validationRule)) {
+                $video->fill($this->request->getPost());
 
-            if (is_null($this->request->getFile('video'))) return redirect('admin_panel_video_new');
+                if (is_null($this->request->getFile('video'))) return redirect('admin_panel_video_new');
 
-            if ($this->request->getFile('video')->getName()) {
-                $validationRule = [
-                    'userfile' => [
-                        'label' => 'Video File',
-                        'rules' => 'uploaded[video]'
-                            . '|mime_in[video,video/mp4]'
-                            . '|max_size[video,'.ini_get("upload_max_filesize").']'
-                    ],
-                ];
-
-                if ($this->validate($validationRule)) {
+                if ($this->request->getFile('video')->getName()) {
                     $videoFile = $this->request->getFile('video');
 
                     $name = $videoFile->getRandomName();
             
                     if (! $videoFile->hasMoved()) {
                         $videoFile->move(ROOTPATH.'/public/media/videos', $name);
-    
+
                         $video->path = $name;
                     }
+                }
 
-                    $videoModel = new VideoModel();
-                    $videoModel->save($video);
+                $videoModel->save($video);
 
-                    return redirect()->route('admin_panel_video_index');
-                } 
+                return redirect()->route('admin_panel_video_index');
             }
+
+            if (count($this->validator->getErrors()) > 0) $errors = $this->validator->getErrors();
         }
 
         return view('adminPanel/video/new', [
-            
+            'errors' => isset($errors) ? $errors : [],
         ]);
     }
 
@@ -74,21 +81,28 @@ class VideoController extends BaseController
         $video = $videoModel->find($video);
 
         if ($this->request->getMethod() == 'post') {
-            $video->fill($this->request->getPost());
-
-            if (is_null($this->request->getFile('video'))) return redirect('admin_panel_video_new');
+            $validationRule = [
+                'title' => [
+                    'label' => 'TITLE',
+                    'rules' => 'max_length[200]'
+                ],
+            ];
 
             if ($this->request->getFile('video')->getName()) {
-                $validationRule = [
-                    'userfile' => [
-                        'label' => 'Video File',
-                        'rules' => 'uploaded[video]'
-                            . '|mime_in[video,video/mp4]'
-                            . '|max_size[video,'.ini_get("upload_max_filesize").']'
-                    ],
+                $validationRule['video'] = [
+                    'label' => 'VIDEO',
+                    'rules' => 'uploaded[video]'
+                        . '|mime_in[video,video/mp4]'
+                        . '|max_size[video,'.ini_get("upload_max_filesize").']'
                 ];
+            }
 
-                if ($this->validate($validationRule)) {
+            if ($this->validate($validationRule)) {
+                if (is_null($this->request->getFile('video'))) return redirect('admin_panel_video_new');
+
+                $video->fill($this->request->getPost());
+
+                if ($this->request->getFile('video')->getName()) {
                     $videoFile = $this->request->getFile('video');
 
                     $name = $videoFile->getRandomName();
@@ -100,18 +114,28 @@ class VideoController extends BaseController
                         
                         $video->path = $name;
                     }
-
-                    $videoModel = new VideoModel();
-                    $videoModel->update($video->id, $video);
-
-                    return redirect()->route('admin_panel_video_index');
                 }
+
+                try {
+                    $videoModel->update($video->id, $video);
+                } catch (\Throwable $th) {
+                    return view('adminPanel/video/edit', [
+                        "video" => $video,
+                        "edit" => true,
+                        'errors' => ['error' => 'No se ha actualizado ningún dato'],
+                    ]);
+                }
+
+                return redirect()->route('admin_panel_video_index');
             }
+
+            if (count($this->validator->getErrors()) > 0) $errors = $this->validator->getErrors();
         }
 
         return view('adminPanel/video/edit', [
             "video" => $video,
             "edit" => true,
+            'errors' => isset($errors) ? $errors : [],
         ]);
     }
 

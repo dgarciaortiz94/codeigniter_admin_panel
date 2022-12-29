@@ -22,7 +22,7 @@ body {
     color: #ffffff;
 }
 
-.form-login input {
+.form-login input, .form-login textarea {
     margin: 10px 0;
     color: #ffffff !important;
 }
@@ -31,7 +31,7 @@ body {
     background-color: transparent;
 }
 
-.form-login input[type='text'], .form-login input[type='password'], .form-login input[type='email'] {
+.form-login input[type='text'], .form-login input[type='password'], .form-login textarea, .form-login input[type='email'] {
     text-align: center;
     background-color: initial;
     border-radius: 0;
@@ -39,13 +39,22 @@ body {
     border-bottom: 3px solid var(--secondary-color);
 }
 
-.form-login input[type='text']:focus, .form-login input[type='password']:focus, .form-login input[type='email']:focus {
+.form-login input[type='text']:focus, .form-login input[type='password']:focus, .form-login textarea:focus, .form-login input[type='email']:focus {
     outline: none;
 }
 
-.form-login input[type='text']::placeholder, .form-login input[type='password']::placeholder, .form-login input[type='email']::placeholder {
+.form-login input[type='text']::placeholder, .form-login input[type='password']::placeholder, .form-login input[type='email']::placeholder, .form-login textarea::placeholder {
     text-align: center;
     color: #b4b4b4;
+}
+
+.form-login textarea {
+    background-color: #0000001f;
+    text-align: left;
+}
+
+.form-login textarea:focus {
+    background-color: #0000001f;
 }
 
 .form-login input[type='submit'] {

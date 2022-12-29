@@ -79,3 +79,26 @@ body {
 .navbar-toggler:focus {
     box-shadow: none;
 }
+
+
+/* ERROR MESSAGES */
+.form-login__success {
+    background-color: #14A44D;
+    border-left: 4px solid #077433;
+    text-align: left;
+    padding: 5px 10px;
+}
+
+.form-login__warning {
+    background-color: #E4A11B;
+    border-left: 4px solid #a17110;
+    text-align: left;
+    padding: 5px 10px;
+}
+
+.form-login__error {
+    background-color: #DC4C64;
+    border-left: 4px solid #d81c3b;
+    text-align: left;
+    padding: 5px 10px;
+}

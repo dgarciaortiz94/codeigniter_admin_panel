@@ -6,19 +6,9 @@
 
 <?= $this->section('section') ?>
     <form class="form form-login" action="" method="post" enctype="multipart/form-data">
-        <?php if ($error) { ?>
-            <div class="form-error animate__animated bd-danger animate__shakeX">
-                <?= $error ?>
-            </div>
-        <?php } ?>
+        <?= view('inc/flash_messages') ?>
 
-        <?php if ($success) { ?>
-            <div class="form-error animate__animated bg-success animate__fadeInUp">
-                <?= $success ?>
-            </div>
-        <?php } ?>
-
-        <input type="file" name="image" class="form-control">
+        <input type="file" name="imageFile" class="form-control">
         <input name="name" type="text" class="form-control" placeholder="Nombre" value="<?php if(isset($user)) echo $user->name ?>">
         <input name="firstname" type="text" class="form-control" placeholder="Primer apellido" value="<?php if(isset($user)) echo $user->firstname ?>">
         <input name="lastname" type="text" class="form-control" placeholder="Segundo apellido" value="<?php if(isset($user)) echo $user->lastname ?>">
